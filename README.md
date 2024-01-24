@@ -1,2 +1,13 @@
-# interview_mock
- Mock interview codes and summaries.
+---
+description: This is the front page. Haven't decide to put what yet...
+---
+
+# Front
+
+
+
+## Useful links
+
+
+
+*
