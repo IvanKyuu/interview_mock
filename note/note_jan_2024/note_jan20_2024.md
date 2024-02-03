@@ -44,10 +44,6 @@ def maxSlidingWindow(self, nums: List[int], k: int) -> List[int]:
     + **Only** pop out element at index `0` if out of length `k`.
     + Pop in elements less than the end of the queue.
 + Thus, the top of queue will just be the greatest element that we need to push into the result.
-
-
-
-
  
 ### 刷题
 Jan 21, 2024
