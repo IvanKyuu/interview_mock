@@ -57,7 +57,7 @@ ___
        1. delete the old ones, and create a new one at the back.
 
 ### Walk Through:
-$[1, 2, 3, 4, 5, 6] \rightarrow[1, , 3, 4, 5, 6, 2]\rightarrow[1, , 3,, 5, 6, 2, 4] \rightarrow[1, , 3, , 5, , 2, 4, 6]$
+$$[1, 2, 3, 4, 5, 6] \rightarrow[1, , 3, 4, 5, 6, 2]\rightarrow[1, , 3,, 5, 6, 2, 4] \rightarrow[1, , 3, , 5, , 2, 4, 6]$$
 
 逗号不删是为了好看啦
 
