@@ -12,5 +12,7 @@
     * [Jan 22, 2024, Meredith's mock summary](note/note_jan_2024/note_jan22_2024.md)
   * [Feb2024](note/note_feb_2024/README.md)
     * [面試準備Interview Preparation](note/note_feb_2024/note_feb1_2024.md)
-* [userful_link](userful_link)
-  * [GPT](userful_link/GPT/README.md)
+* [userful link](useful_link)
+  * [GPT](useful_link/GPT/README.md)
+    * [AutoGen](useful_link/GPT/auto_gen.md)
+  
