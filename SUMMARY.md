@@ -17,4 +17,4 @@
 * [userful link](useful_link)
   * [GPT](useful_link/GPT/README.md)
     * [AutoGen](useful_link/GPT/auto_gen.md)
-  
+  * [job opening](useful_link/opening.md)
