@@ -187,6 +187,25 @@ class Solution:
         return depth_sofar
 
 
+    def rightSideView(self, root: Optional[TreeNode]) -> List[int]:
+        self.queue = deque()
+        rhs_view = []
+        if not rhs_view:
+            return rhs_view
+        self.queue.append((0, root))
+        node:TreeNode = None
+        while self.queue:
+            depth, node = self.queue.pop()
+            if len(rhs_view) <= depth:
+                rhs_view.append(node.val)
+            if node.left:
+                self.queue.append((depth + 1, node.left))
+            if node.right:
+                self.queue.append((depth+1, node.right))
+        return rhs_view
+
+
+
 if __name__ == "__main__":
     s = Solution()
     # root = s.construct_from_lst([10, 5, -3, 3, 2, None, 11, 3, -2, None, 1])
