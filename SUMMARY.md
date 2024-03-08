@@ -9,7 +9,7 @@
   * [blog feb 2024](blog/blog_feb_2024/README.md)
     * [blog_feb2_2024](blog/blog_feb_2024/blog_feb2_2024.md)
   * [blog mar 2024](blog/blog_mar_2024/README.md)
-    * [blog_feb2_2024](blog/blog_mar_2024/blog_mar4_2024.md)
+    * [blog_mar4_2024](blog/blog_mar_2024/blog_mar4_2024.md)
 * [note](note/README.md)
   * [note jan 2024](note/note_jan_2024/README.md)
     * [Jan 20, 2024 三楼楼长mock summary](note/note_jan_2024/note_jan20_2024.md)

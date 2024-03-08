@@ -1,8 +1,10 @@
-from typing import List
+from typing import List, Set
 import numpy as np
 from collections import defaultdict
 from collections import deque
 from collections import Counter
+from queue import PriorityQueue
+from pprint import pprint
 
 
 class Solution:
@@ -109,12 +111,38 @@ class Solution:
         return count
 
     def calcEquation(self, equations: List[List[str]], values: List[float], queries: List[List[str]]) -> List[float]:
-        # vocabulary = {}
-        ctr = Counter()
-        for a, b in equations:
-            ctr[b] += 1
-        print(ctr)
+        if not equations:
+            return None
+        assert len(values) == len(equations)
+        adj_matrix = defaultdict(dict)
+        for (a, b), value in zip(equations, values):
+            adj_matrix[a][b] = value
+            adj_matrix[b][a] = 1.0 / value
+        for node in adj_matrix:
+            adj_matrix[node][node] = 1
+            
+            
+        def dfs(visited: Set[str], src: str, dest: str, cur: int, ans: List[int]) -> None:
+            if src in visited:
+                return
+            visited.add(src)
+            if dest in adj_matrix[src]:
+                ans[0] = cur * adj_matrix[src][dest]
+                return
+            for neighbour in adj_matrix[src]:
+                dfs(visited, neighbour, dest, cur * adj_matrix[src][neighbour], ans)
     
+        for i in range(len(queries)):
+            a, b = queries[i]
+            if a not in adj_matrix or b not in adj_matrix:
+                queries[i] = -1
+                continue
+            visited = set()
+            ans = [-1]
+            dfs(visited, a, b, 1, ans)
+            queries[i] = ans[0]
+        # pprint(adj_matrix)
+        return queries
 
 s = Solution()
 # s.findCircleNum([[1,0,0],[0,1,0],[0,0,1]])
@@ -127,7 +155,14 @@ s = Solution()
 # matrix = np.matrix(mat) 
 # print(matrix)
 # print(set((0, 5)) - set((0, 4)))
-# c = s.minReorder(6, [[0,1],[1,3],[2,3],[4,0],[4,5]])
+# c = s.minReorder(6, [[0,01],[1,3],[2,3],[4,0],[4,5]])
 # c = s.minReorder(n = 3, connections = [[1,0],[2,0]])
 # print(c)
-print(s.calcEquation([["a","b"],["b","c"]], [2.0,3.0], [["a","c"],["b","a"],["a","e"],["a","a"],["x","x"]]))
+# print(s.calcEquation([["a","b"],["b","c"]], [2.0,3.0], [["a","c"],["b","a"],["a","e"],["a","a"],["x","x"]]))
+# print(s.calcEquation([["a","b"],["e","f"],["b","e"]], [3.4,1.4,2.3], [["b","a"],["a","f"],["f","f"],["e","e"],["c","c"],["a","c"],["f","e"]]))
+# print(s.calcEquation([["a","b"],["c","d"]], [1.0,1.0], [["a","c"],["b","d"],["b","a"],["d","c"]]))
+equations = [["a","b"],["a","c"],["a","d"],["a","e"],["a","f"],["a","g"],["a","h"],["a","i"],["a","j"],["a","k"],["a","l"],["a","aa"],["a","aaa"],["a","aaaa"],["a","aaaaa"],["a","bb"],["a","bbb"],["a","ff"]]
+values = [1.0,2.0,3.0,4.0,5.0,6.0,7.0,8.0,9.0,10.0,11.0,1.0,1.0,1.0,1.0,1.0,3.0,5.0]
+queries = [["d","f"],["e","g"],["e","k"],["h","a"],["aaa","k"],["aaa","i"],["aa","e"],["aaa","aa"],["aaa","ff"],["bbb","bb"],["bb","h"],["bb","i"],["bb","k"],["aaa","k"],["k","l"],["x","k"],["l","ll"]]
+
+print(s.calcEquation(equations=equations, values=values, queries=queries))
